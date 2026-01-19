@@ -95,10 +95,10 @@ The -v $(pwd):/app option mounts the current project directory into the containe
 After each run, the script generates **folders with benchmark results** in the project directory.  
 Typical folder structure:
 
-results/
-├── Mobile/
-├── Laptop/
-└── Server/
+results
+|---Mobile
+|---Laptop
+\---Server
 
 
 Each folder contains the benchmark data for the corresponding profile.
