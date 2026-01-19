@@ -18,10 +18,28 @@ Your results may vary depending on available resources.
 ## Prerequisites
 
 - Docker installed ([installation guide](https://docs.docker.com/get-docker/))
+```bash
+sudo apt update
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+Version:           28.2.2
+ API version:       1.50
+ Go version:        go1.23.1
+ Git commit:        28.2.2-0ubuntu1~24.04.1
+ Built:             Wed Sep 10 14:16:39 2025
+ OS/Arch:           linux/amd64
+ Context:           default
+
 - Linux or macOS recommended (Windows possible with WSL2)
 - Git, to clone this repository
+- Docker base image: `python:3.12-slim`
+- Python 3.12.12 (inside the Docker container)
+- Python 3.12.3 (outside the Docker container)
 
----
+
 
 ## Clone the Repository
 
@@ -29,8 +47,6 @@ Your results may vary depending on available resources.
 git clone https://github.com/Aprilanna6/pqc-benchmark.git
 cd pqc-benchmark
 ```
-
-
 ## Build the Docker Image
 
 To build the Docker image, run:
