@@ -94,7 +94,7 @@ The -v $(pwd):/app option mounts the current project directory into the containe
 ## Results
 
 After each run, the script generates **folders with benchmark results** in the project directory.  
-Typical folder structure:
+Project Folder Structure:
 
 ```
 /pqc-benchmark
