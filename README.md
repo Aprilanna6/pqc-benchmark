@@ -95,15 +95,29 @@ The -v $(pwd):/app option mounts the current project directory into the containe
 
 After each run, the script generates **folders with benchmark results** in the project directory.  
 Typical folder structure:
+
 ```
-/pqc-hqc-benchmark
-├─ benchmark_kem.py          # dein Benchmark-Skript
-├─ requirements.txt          # alle Python Dependencies
-├─ Dockerfile                # für reproduzierbare Umgebung
-├─ Mobile/                   # CSV + PNG für Mobile
-├─ Laptop/                   # CSV + PNG für Laptop
-├─ Server/                   # CSV + PNG für Server
-└─ combined_hqc_*.png        # kombinierte Plots
+/pqc-benchmark
+├─ benchmark_kem.py                # benchmark script (runs with Docker image)
+├─ requirements.txt                # all Python dependencies
+├─ Dockerfile                      # for reproducible environment
+├─ plot_combined_benchmarks.py.py  # script to generate combined plots          
+├─ Mobile/                         # CSV + PNGs for Mobile profile
+│  ├─ pqc_hqc_benchmark.csv
+│  ├─ hqc_keysize_vs_time_measured.png
+│  └─ hqc_keysize_vs_time_extrapolated.png
+├─ Laptop/                     # CSV + PNGs for Laptop profile
+│  └─ ...
+├─ Server/                     # CSV + PNGs for Server profile
+│  └─ ...
+├─ Default/                    # CSV + PNGs if PROFILE not set
+│  └─ ...
+├─ combined_hqc_extrapolated.png   # combined extrapolated key size vs time across all profiles
+├─ combined_hqc_measured.png       # combined measured key size vs time across all profiles
+├─ extrapolated_per_profile.png    # extrapolated key size vs time per profile (subplots)
+└─ measured_per_profile.png        # measured key size vs time per profile (subplots) 
+
+
 
 ```
 
