@@ -72,7 +72,7 @@ There are three pre-configured profiles:
 
 | Profile | CPUs | RAM    | Description            |
 | ------- | ---- | ------ | ---------------------- |
-| Mobile  | 0.5  | 256 MB | Simulates a smartphone |
+| Mobile  | 0.5  | 500 MB | Simulates a smartphone |
 | Laptop  | 2    | 4 GB   | Simulates a laptop     |
 | Server  | 8    | 16 GB  | Simulates a server     |
 
@@ -80,7 +80,7 @@ There are three pre-configured profiles:
 
 ```bash
 # Mobile
-sudo docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=256m pqc-benchmark:latest
+sudo docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=500m pqc-benchmark:latest
 
 # Laptop
 sudo docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=2 --memory=4096m pqc-benchmark:latest
