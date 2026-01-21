@@ -8,8 +8,9 @@ This repository provides a Docker-based setup for benchmarking Post-Quantum Cryp
 
 This benchmark was tested on a **Linux Ubuntu 24 VM** with:
 
-- 2 CPUs  
-- 2 GB RAM  
+- 8 CPUs  
+- 16 GB RAM
+- 100 GB Disk
 
 Your results may vary depending on available resources.
 
@@ -72,8 +73,8 @@ There are three pre-configured profiles:
 | Profile | CPUs | RAM    | Description            |
 | ------- | ---- | ------ | ---------------------- |
 | Mobile  | 0.5  | 256 MB | Simulates a smartphone |
-| Laptop  | 1    | 2 GB   | Simulates a laptop     |
-| Server  | 4    | 8 GB   | Simulates a server     |
+| Laptop  | 2    | 4 GB   | Simulates a laptop     |
+| Server  | 8    | 16 GB  | Simulates a server     |
 
 ### Examples:
 
@@ -82,10 +83,10 @@ There are three pre-configured profiles:
 sudo docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=256m pqc-benchmark:latest
 
 # Laptop
-sudo docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=1 --memory=2048m pqc-benchmark:latest
+sudo docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=2 --memory=4096m pqc-benchmark:latest
 
 # Server
-sudo docker run --rm -v $(pwd):/app -e PROFILE=Server --cpus=4 --memory=8192m pqc-benchmark:latest
+sudo docker run --rm -v $(pwd):/app -e PROFILE=Server --cpus=8 --memory=16384m pqc-benchmark:latest
 
 ```
 The -v $(pwd):/app option mounts the current project directory into the container so that results are saved directly on the host.
@@ -116,5 +117,6 @@ Each folder contains the benchmark data for the corresponding profile.
 ## License
 
 Include your license here (e.g., MIT, Apache 2.0, etc.)
+
 
 
