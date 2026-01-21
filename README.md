@@ -96,10 +96,15 @@ The -v $(pwd):/app option mounts the current project directory into the containe
 After each run, the script generates **folders with benchmark results** in the project directory.  
 Typical folder structure:
 ```
-results
-|---Mobile
-|---Laptop
-\---Server
+/pqc-hqc-benchmark
+├─ benchmark_kem.py          # dein Benchmark-Skript
+├─ requirements.txt          # alle Python Dependencies
+├─ Dockerfile                # für reproduzierbare Umgebung
+├─ Mobile/                   # CSV + PNG für Mobile
+├─ Laptop/                   # CSV + PNG für Laptop
+├─ Server/                   # CSV + PNG für Server
+└─ combined_hqc_*.png        # kombinierte Plots
+
 ```
 
 Each folder contains the benchmark data for the corresponding profile.
