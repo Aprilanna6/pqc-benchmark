@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 profiles = ["Mobile", "Laptop", "Server"]
 marker_map = {"Mobile": "o", "Laptop": "^", "Server": "s"}  # Marker per profile
-linestyles = {"Mobile": "-", "Laptop": "--", "Server": "-."}  # Line styles for extrapolated
+linestyles = {"Mobile": ":", "Laptop": "--", "Server": "-."}  # Line styles for extrapolated
 
 color_enc = "green"
 color_dec = "red"
