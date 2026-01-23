@@ -2,5 +2,4 @@ numpy==2.4.1
 pandas==2.3.3
 matplotlib==3.10.8
 pqcrypto==0.3.4
-
-
+cryptography==46.0.3
