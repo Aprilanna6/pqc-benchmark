@@ -82,11 +82,18 @@ There are three pre-configured profiles:
 # Mobile
 sudo docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=500m pqc-benchmark:latest
 
+docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=500 pqc-benchmark:latest python benchmark_ecc.py
+
 # Laptop
 sudo docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=2 --memory=4096m pqc-benchmark:latest
 
+docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=2 --memory=4096m pqc-benchmark:latest python benchmark_ecc.py
+
 # Server
 sudo docker run --rm -v $(pwd):/app -e PROFILE=Server --cpus=8 --memory=16384m pqc-benchmark:latest
+
+docker run --rm -v $(pwd):/app -e PROFILE=Server --cpus=8 --memory=16384m pqc-benchmark:latest python benchmark_ecc.py
+
 
 ```
 The -v $(pwd):/app option mounts the current project directory into the container so that results are saved directly on the host.
@@ -99,9 +106,10 @@ Project Folder Structure:
 ```
 /pqc-benchmark
 ├─ benchmark_kem.py                # benchmark script (runs with Docker image)
+├─ benchmark_cc.py                # benchmark script (runs with Docker image)
 ├─ requirements.txt                # all Python dependencies
 ├─ Dockerfile                      # for reproducible environment
-├─ plot_combined_benchmarks.py.py  # script to generate combined plots          
+├─ plot_combined_benchmarks.py     # script to generate combined plots          
 ├─ Mobile/                         # CSV + PNGs for Mobile profile
 │  ├─ pqc_hqc_benchmark.csv
 │  ├─ hqc_keysize_vs_time_measured.png
@@ -135,7 +143,7 @@ Each folder contains the benchmark data for the corresponding profile.
 
 ## License
 
-Include your license here (e.g., MIT, Apache 2.0, etc.)
+Apache 2.0
 
 
 
