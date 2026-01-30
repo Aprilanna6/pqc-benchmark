@@ -82,15 +82,21 @@ There are three pre-configured profiles:
 # Mobile
 sudo docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=500m pqc-benchmark:latest
 
-docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=500 pqc-benchmark:latest python benchmark_ecc.py
+docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=500m pqc-benchmark:latest python benchmark_mlkem.py
+
+docker run --rm -v $(pwd):/app -e PROFILE=Mobile --cpus=0.5 --memory=500m pqc-benchmark:latest python benchmark_ecc.py
 
 # Laptop
 sudo docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=2 --memory=4096m pqc-benchmark:latest
+
+docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=2 --memory=4096m pqc-benchmark:latest python benchmark_mlkem.py
 
 docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=2 --memory=4096m pqc-benchmark:latest python benchmark_ecc.py
 
 # Server
 sudo docker run --rm -v $(pwd):/app -e PROFILE=Server --cpus=8 --memory=16384m pqc-benchmark:latest
+
+docker run --rm -v $(pwd):/app -e PROFILE=Laptop --cpus=8 --memory=16384m pqc-benchmark:latest python benchmark_mlkem.py
 
 docker run --rm -v $(pwd):/app -e PROFILE=Server --cpus=8 --memory=16384m pqc-benchmark:latest python benchmark_ecc.py
 
@@ -105,15 +111,18 @@ Project Folder Structure:
 
 ```
 /pqc-benchmark
-├─ benchmark_kem.py                # benchmark script (runs with Docker image)
-├─ benchmark_cc.py                # benchmark script (runs with Docker image)
+├─ benchmark_kem.py                # benchmark script hqc (runs with Docker image)
+├─ benchmark_mlkem.py              # script ml_kem (runs with Docker image)
+├─ benchmark_ecc.py                # script ecc (runs with Docker image)
+├─ benchmark_mceliece.py           # script mceliece (runs with Docker image)
 ├─ requirements.txt                # all Python dependencies
 ├─ Dockerfile                      # for reproducible environment
-├─ plot_combined_benchmarks.py     # script to generate combined plots          
+├─ plot_combined_benchmarks*.py    # script to generate combined plots    
+├─ plot_benchmark_all_profiles.py  # script to generate all pqc measurement plots           
 ├─ Mobile/                         # CSV + PNGs for Mobile profile
-│  ├─ pqc_hqc_benchmark.csv
-│  ├─ hqc_keysize_vs_time_measured.png
-│  └─ hqc_keysize_vs_time_extrapolated.png
+│  ├─ pqc_*_benchmark.csv
+│  ├─ *_keysize_vs_time_measured.png
+│  └─ *_keysize_vs_time_extrapolated.png
 ├─ Laptop/                     # CSV + PNGs for Laptop profile
 │  └─ ...
 ├─ Server/                     # CSV + PNGs for Server profile
@@ -121,9 +130,9 @@ Project Folder Structure:
 ├─ Default/                    # CSV + PNGs if PROFILE not set
 │  └─ ...
 ├─ combined_hqc_extrapolated.png   # combined extrapolated key size vs time across all profiles
-├─ combined_hqc_measured.png       # combined measured key size vs time across all profiles
-├─ extrapolated_per_profile.png    # extrapolated key size vs time per profile (subplots)
-└─ measured_per_profile.png        # measured key size vs time per profile (subplots) 
+├─ combined_*_measured.png       # combined measured key size vs time across all profiles
+├─ extrapolated_per_profile*.png    # extrapolated key size vs time per profile (subplots)
+└─ measured_per_profile*.png        # measured key size vs time per profile (subplots) 
 
 
 
